@@ -42,7 +42,7 @@ if ( mysqli_num_rows( $r ) == 1 )
 mysqli_close($dbc);
 
 # Create navigation links.
-echo '<p><a href="store.php">Shop</a> | <a href="cart.php">View Cart</a> | <a href="forum.php">Forum</a> | <a href="dashboard.php">Home</a> | <a href="logout.php">Logout</a></p>' ;
+echo '<p><a href="store.php">Store</a> | <a href="cart.php">View Cart</a> | <a href="forum.php">Forum</a> | <a href="dashboard.php">Home</a> | <a href="logout.php">Logout</a></p>' ;
 
 # Display footer section.
 include ('includes/templates/footer.html');

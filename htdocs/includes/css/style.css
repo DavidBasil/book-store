@@ -4,3 +4,4 @@ table { border-spacing:5px; width:730px;}
 th { color:#FFF; background:#000; text-align:left; }
 td { border-bottom:1px solid black; background:#F0F0F0; padding:3px; text-align:left; vertical-align:top;}
 p#err_msg { color:#F00; font-weight:bold; }
+img { max-width: 100px; }

@@ -39,7 +39,7 @@ if(mysqli_num_rows($r) > 0): ?>
   <a href='post.php'>Post Message</a> |
   <a href='store.php'>Shop</a> |
   <a href='dashboard.php'>Home</a> |
-  <a href='goodbye.php'>Lougout</a> |
+  <a href='logout.php'>Lougout</a> |
 </p>
 
 <?php 

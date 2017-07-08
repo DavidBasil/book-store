@@ -24,10 +24,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     require('../connect_db.php');
     $q = "insert into forum (first_name, last_name, subject, message, post_date)
           values(
-            '{$_SESSION[first_name]}',
-            '{$_SESSION[last_name]}',
-            '{$_POST[subject]}',
-            '{$_POST[message]}',
+            '{$_SESSION['first_name']}',
+            '{$_SESSION['last_name']}',
+            '{$_POST['subject']}',
+            '{$_POST['message']}',
             NOW()
           )";
     $r = mysqli_query($dbc, $q);

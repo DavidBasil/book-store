@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id'])){
 }
 
 $page_title = 'Post Message';
-include('includes/header.html');
+include('includes/templates/header.html');
 
 ?>
 
@@ -26,10 +26,10 @@ include('includes/header.html');
 
 <p>
   <a href="forum.php">Forum</a> 
-  <a href="shop.php">Shop</a> 
-  <a href="home.php">Home</a> 
-  <a href="goodbye.php">Logout</a>  
+  <a href="store.php">Shop</a> 
+  <a href="dashboard.php">Home</a> 
+  <a href="logout.php">Logout</a>  
 </p>
 
 <?php 
-include('includes/footer.html');
+include('includes/templates/footer.html');

@@ -69,7 +69,8 @@ else
 { echo '<p>Your cart is currently empty.</p>' ; }
 
 # Create navigation links.
-echo '<p><a href="shop.php">Shop</a> | <a href="checkout.php?total='.$total.'">Checkout</a> | <a href="forum.php">Forum</a> | <a href="home.php">Home</a> | <a href="goodbye.php">Logout</a></p>' ;
+echo '<p><a href="store.php">Store</a> | <a href="checkout.php?total='.$total.'">Checkout</a> | <a href="forum.php">Forum</a> | <a href="dashboard.php">Home</a> | <a href="logout.php">Logout</a></p>';
+
 
 # Display footer section.
 include ('includes/templates/footer.html');
