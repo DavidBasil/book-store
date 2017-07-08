@@ -15,13 +15,26 @@ if (isset($errors) && !empty($errors)){
 
 ?>
 
-<h2>Login</h2>
-<form action="login_action.php" method="post">
-	<label for="email">Email:</label>	
-	<input type="email" name="email" id="email" /><br>
-	<label for="pass">Password:</label>
-	<input type="password" name="pass" id="pass" /><br>
-	<input type="submit" value="Login" />
-</form>
+<div class="container-fluid text-center">
+
+	<div class="well">
+	<h2>Welcome to Book Store</h2>
+	<h3 class="text-success">Login</h2>
+	<br />
+	<form action="login_action.php" method="post" class="form-inline text-center">
+		<div class="form-group">
+			<label for="email">Email:</label>	
+			<input type="email" name="email" id="email" class="form-control" /><br>
+		</div>
+		<div class="form-group">
+			<label for="pass">Password:</label>
+			<input type="password" name="pass" id="pass" class="form-control" /><br>
+		</div>
+		<button type="submit" class="btn btn-success">Login <span class="glyphicon glyphicon-home"></span></button>
+	</form>
+		
+	</div>
+	
+</div>
 
 <?php include('includes/templates/footer.html'); ?>
