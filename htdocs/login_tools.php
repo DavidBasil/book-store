@@ -1,6 +1,6 @@
 <?php
 
-
+// load login page
 function load($page='login.php'){
 	$url = 'http;//'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']);
 	$url = rtrim($url, '/\\');
@@ -9,6 +9,7 @@ function load($page='login.php'){
 	exit();
 }
 
+// login validation
 function validate($dbc, $email='', $pwd=''){
 	$errors = array();
 	if(empty($email)){

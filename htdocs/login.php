@@ -1,10 +1,10 @@
 <?php
 
-/* set page title and include header */
+// set page title and include header 
 $page_title = 'Login';
 include('includes/templates/header.html');
 
-/* if there are errors, dislay them and provide registration link */
+// if there are errors, dislay them and provide registration link 
 if (isset($errors) && !empty($errors)){
 	echo '<p id="error">Oop! There was a problem</p>';
 	foreach($errors as $error){
@@ -12,11 +12,9 @@ if (isset($errors) && !empty($errors)){
 	}
 	echo "Please try again or <a href='register.php'>register</a> here.";
 }
-
 ?>
 
 <div class="container-fluid text-center">
-
 	<div class="well">
 	<h2>Welcome to Book Store</h2>
 	<h3 class="text-success">Login</h2>
@@ -32,9 +30,7 @@ if (isset($errors) && !empty($errors)){
 		</div>
 		<button type="submit" class="btn btn-success">Login <span class="glyphicon glyphicon-home"></span></button>
 	</form>
-		
 	</div>
-	
 </div>
 
 <?php include('includes/templates/footer.html'); ?>
