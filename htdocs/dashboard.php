@@ -12,23 +12,7 @@ if (!isset($_SESSION['user_id'])){
 $page_title = 'Dashboard';
 include('includes/templates/header.html');
 
-echo <<<MENU
-<nav class="navbar">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Book Store</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li><a href="forum.php">Forum</a></li>
-      <li><a href="store.php">Store</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-    </ul>
-  </div>
-</nav>
-MENU;
-
+include('includes/templates/nav.html');
 
 echo <<<TXT
 <div class="container-fluid text-center">

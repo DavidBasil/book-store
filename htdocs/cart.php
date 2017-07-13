@@ -1,10 +1,10 @@
 <?php // shopping cart page
 
 // session start
-session_start() ;
+session_start();
 
 // redirect to login page if not logged in
-if (!isset( $_SESSION[ 'user_id' ])) { 
+if (!isset( $_SESSION['user_id'])) { 
 	require('login_tools.php'); 
 	load();
 }
@@ -12,19 +12,21 @@ if (!isset( $_SESSION[ 'user_id' ])) {
 // page title and include header
 $page_title = 'Cart' ;
 include ('includes/templates/header.html');
+include('includes/templates/nav.html');
 
+echo "<div class='container-fluid'>";
 // if cart form has been submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   # Update changed quantity field values.
   foreach ( $_POST['qty'] as $item_id => $item_qty )
   {
     # Ensure values are integers.
-    $id = (int) $item_id;
-    $qty = (int) $item_qty;
+    $id = (int)$item_id;
+    $qty = (int)$item_qty;
 
     # Change quantity or delete if zero.
-    if ( $qty == 0 ) { unset ($_SESSION['cart'][$id]); } 
-    elseif ( $qty > 0 ) { $_SESSION['cart'][$id]['quantity'] = $qty; }
+    if($qty == 0){ unset ($_SESSION['cart'][$id]); } 
+    elseif ($qty > 0) {$_SESSION['cart'][$id]['quantity'] = $qty;}
   }
 }
 
@@ -45,34 +47,40 @@ if (!empty($_SESSION['cart']))
   $r = mysqli_query ($dbc, $q);
 
   # Display body section with a form and a table.
-  echo '<form action="cart.php" method="post"><table><tr><th colspan="5">Items in your cart</th></tr><tr>';
+	echo '<form action="cart.php" method="post">
+					<table class="table">
+						<tr>
+							<th colspan="5">Items in your cart</th>
+						</tr>
+						<tr>';
   while ($row = mysqli_fetch_array ($r, MYSQLI_ASSOC))
   {
-    # Calculate sub-totals and grand total.
+		/* display totals */
     $subtotal = $_SESSION['cart'][$row['item_id']]['quantity'] * $_SESSION['cart'][$row['item_id']]['price'];
     $total += $subtotal;
-
-    # Display the row/s:
-    echo "<tr> <td>{$row['item_name']}</td> <td>{$row['item_desc']}</td>
-    <td><input type=\"text\" size=\"3\" name=\"qty[{$row['item_id']}]\" value=\"{$_SESSION['cart'][$row['item_id']]['quantity']}\"></td>
-    <td> {$row['item_price']}  </td> <td>".number_format ($subtotal, 2)."</td></tr>";
+		/* display rows */
+		echo "<tr>
+						<td>{$row['item_name']}</td> 
+						<td>{$row['item_desc']}</td>
+   					<td><input type='text' size='3' name='qty[{$row['item_id']}]' value='{$_SESSION['cart'][$row['item_id']]['quantity']}'></td>
+    <td>{$row['item_price']}</td><td>".number_format ($subtotal, 2)."</td></tr>";
   }
   
-  # Close the database connection.
+  /* Close the database connection. */
   mysqli_close($dbc); 
   
-  # Display the total.
-  echo ' <tr><td colspan="5" style="text-align:right">Total = '.number_format($total,2).'</td></tr></table><input type="submit" name="submit" value="Update My Cart"></form>';
+   /* Display the total. */
+	echo '<tr><td colspan="5" style="text-align:right">Total ='.number_format($total,2).'</td></tr></table>
+			<button type="submit" name="submit" class="btn btn-info">Update cart</button>
+			<a href="checkout.php" class="btn btn-danger">Checkout</a>
+		</button></form>';
 }
 else
-# Or display a message.
-{ echo '<p>Your cart is currently empty.</p>' ; }
+ /* Or display a message. */
+{ echo "<p>Your cart is currently empty.</p>" ; }
 
-# Create navigation links.
-echo '<p><a href="store.php">Store</a> | <a href="checkout.php?total='.$total.'">Checkout</a> | <a href="forum.php">Forum</a> | <a href="dashboard.php">Home</a> | <a href="logout.php">Logout</a></p>';
-
-
-# Display footer section.
+echo "</div>";
+/* include footer */
 include ('includes/templates/footer.html');
 
 ?>
