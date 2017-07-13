@@ -19,16 +19,16 @@ require ('../connect_db.php');
 // include navigation
 include('includes/templates/nav.html');
 
-echo "<div class='container-fluid'>";
+echo "<div class='container-fluid text-center'><h3>Store</h3><br>";
 // retrieve all items from db
 $q = "SELECT * FROM store";
 $r = mysqli_query($dbc, $q);
 if (mysqli_num_rows($r) > 0){
-  echo '<table class="table-bordered table table-condensed"><tr>';
+  echo '<table class="table-bordered table table-condensed store-table"><tr>';
   while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)){
-		echo '<td><strong>'.$row['item_name'].
-			'</strong><br>'.$row['item_desc'].
-			'<br><img src='.$row['item_img'].
+		echo '<td><strong><u>'.$row['item_name'].
+			'</u><br></strong><br><p>'.$row['item_desc'].
+			'</p><br><img src='.$row['item_img'].
 			' class="img-thumbnail img-responsive"><br>$'.$row['item_price'].
 			'<br><a href="added.php?id='.$row['item_id'].'">Add to cart </a></td>';
 	}

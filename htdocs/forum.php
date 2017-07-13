@@ -17,12 +17,13 @@ $q = "SELECT * FROM forum";
 $r = mysqli_query($dbc,$q);
 ?>	
 
-<h2 class="text-center">Forum</h2>
+<h2 class="text-center animated zoomIn">Forum</h2>
+<br />
 
 <?php
 // if there are forum posts
 if(mysqli_num_rows($r) > 0): ?>
-  <table class="table table-striped table-bordered text-center">
+  <table class="table table-striped table-bordered text-center animated zoomIn">
     <tr>
       <th class="text-center text-success">Posted By</th>
       <th class="text-center text-success">Subject</th>

@@ -37,11 +37,6 @@ td p {
 	height: 100px;
 }
 
-td img:hover,
-td a:hover {
-	opacity: 0.6;
-}
-
 /* footer */
 .footer {
 	position: absolute;
