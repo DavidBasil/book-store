@@ -1,4 +1,4 @@
-<?php // forum page
+<?php 
 
 session_start();
 
@@ -11,12 +11,11 @@ $page_title = 'Forum';
 include('includes/templates/header.html');
 require('../connect_db.php');
 include('includes/templates/nav.html');
+
 // query the db
 $q = "SELECT * FROM forum";
 $r = mysqli_query($dbc,$q);
 ?>	
-
-
 
 <h2 class="text-center">Forum</h2>
 
@@ -40,7 +39,6 @@ if(mysqli_num_rows($r) > 0): ?>
 <?php else: ?>
 <p>There are currently no messages.</p>
 <?php endif; ?>
-
 
 <?php 
 mysqli_close($dbc);

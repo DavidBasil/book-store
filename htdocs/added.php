@@ -1,50 +1,51 @@
-<?php # DISPLAY SHOPPING CART ADDITIONS PAGE.
+<?php
 
-# Access session.
+// start the session
 session_start() ;
 
-# Redirect if not logged in.
-if ( !isset( $_SESSION[ 'user_id' ] ) ) { require ( 'login_tools.php' ) ; load() ; }
+// redirect to login page if user not authorized
+if (!isset($_SESSION['user_id'])) { 
+	require('login_tools.php'); 
+	load(); 
+}
 
-# Set page title and display header section.
+// page title, include header and navigation
 $page_title = 'Cart Addition' ;
-include ( 'includes/templates/header.html' ) ;
+include('includes/templates/header.html');
+include('includes/templates/nav.html');
 
-# Get passed product id and assign it to a variable.
-if ( isset( $_GET['id'] ) ) $id = $_GET['id'] ; 
+// get product id
+if(isset($_GET['id'])) {
+	$id = $_GET['id']; 
+}
 
-# Open database connection.
-require ( '../connect_db.php' ) ;
+// require db connection
+require('../connect_db.php');
 
-# Retrieve selective item data from 'shop' database table. 
-$q = "SELECT * FROM store WHERE item_id = $id" ;
-$r = mysqli_query( $dbc, $q ) ;
-if ( mysqli_num_rows( $r ) == 1 )
-{
+echo "<div class='container-fluid text-center'>";
+
+// retrieve all items from db
+$q = "SELECT * FROM store WHERE item_id = $id";
+$r = mysqli_query($dbc, $q );
+if(mysqli_num_rows($r) == 1) {
   $row = mysqli_fetch_array( $r, MYSQLI_ASSOC );
-
-  # Check if cart already contains one of this product id.
-  if ( isset( $_SESSION['cart'][$id] ) )
-  { 
-    # Add one more of this product.
+	// check if cart already containes the product
+  if(isset($_SESSION['cart'][$id])){ 
+		// add one more of this product
     $_SESSION['cart'][$id]['quantity']++; 
     echo '<p>Another "'.$row["item_name"].'" has been added to your cart</p>';
-  } 
-  else
-  {
-    # Or add one of this product to the cart.
-    $_SESSION['cart'][$id]= array ( 'quantity' => 1, 'price' => $row['item_price'] ) ;
-    echo '<p>A "'.$row["item_name"].'" has been added to your cart</p>' ;
+  } else {
+		// or add one this product to cart
+    $_SESSION['cart'][$id]= array('quantity' => 1, 'price' => $row['item_price']);
+		echo '<h3>A "'.$row["item_name"].'" has been added to your cart</h3>';
   }
 }
 
-# Close database connection.
+echo "</div>";
+// close db connection
 mysqli_close($dbc);
 
-# Create navigation links.
-echo '<p><a href="store.php">Store</a> | <a href="cart.php">View Cart</a> | <a href="forum.php">Forum</a> | <a href="dashboard.php">Home</a> | <a href="logout.php">Logout</a></p>' ;
-
-# Display footer section.
+// include footer
 include ('includes/templates/footer.html');
 
 ?>
