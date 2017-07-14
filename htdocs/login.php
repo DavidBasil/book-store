@@ -1,5 +1,4 @@
 <?php
-
 // set page title and include header 
 $page_title = 'Login';
 include('includes/templates/header.html');

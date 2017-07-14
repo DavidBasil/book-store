@@ -1,13 +1,16 @@
+/* todo: refactor resposiveness */
 body {
 	font-size: 18px;
 	display: none;
 }
 
+/* forms */
 .form-control {
 	width: 50%;
 	margin: 0 auto;
 }
 
+/* images */
 .img-thumbnail {
 	max-width: 100px;
 }
@@ -67,6 +70,7 @@ td a:hover {
 	padding: 10px;
 }
 
+/* buttons */
 button.btn, a {
 	font-size: 18px;
 	color: #fff;
@@ -90,3 +94,10 @@ a.view-cart{
 	color: #772953;
 }
 
+.btn-success {
+	background-color: #772953;
+}
+
+.btn-success:hover {
+	background-color: #772953;
+}
