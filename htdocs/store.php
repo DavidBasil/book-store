@@ -30,7 +30,7 @@ if (mysqli_num_rows($r) > 0){
 			'</u><br></strong><br><p>'.$row['item_desc'].
 			'</p><br><img src='.$row['item_img'].
 			' class="img-thumbnail img-responsive"><br>$'.$row['item_price'].
-			'<br><a href="added.php?id='.$row['item_id'].'">Add to cart </a></td>';
+			'<br><a href="added.php?id='.$row['item_id'].'" class="btn">Add to cart </a></td>';
 	}
   echo '</tr></table>';
 	// close db connection

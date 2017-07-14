@@ -13,7 +13,7 @@ if (!isset( $_SESSION['user_id'])) {
 $page_title = 'Cart' ;
 include ('includes/templates/header.html');
 include('includes/templates/nav.html');
-
+// todo: make cart responsive
 echo "<div class='container-fluid'>";
 // if cart form has been submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
