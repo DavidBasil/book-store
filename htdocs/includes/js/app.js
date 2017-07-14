@@ -1,5 +1,4 @@
 $(function(){
-
 	// fade in body
 	$('body').fadeIn(600);
 	// animate table

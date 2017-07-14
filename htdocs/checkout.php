@@ -1,36 +1,34 @@
 <?php 
 
-// start the session
+# Access session.
 session_start() ;
 
-// redirect to login page if not authorized
-if (!isset($_SESSION['user_id'])) { 
-	require('login_tools.php'); 
-	load(); 
-}
+# Redirect if not logged in.
+if ( !isset( $_SESSION[ 'user_id' ] ) ) { require ( 'login_tools.php' ) ; load() ; }
 
-// page title, header and nav
-$page_title = 'Checkout';
-include('includes/templates/header.html');
-include('includes/templates/nav.html');
+# Set page title and display header section.
+$page_title = 'Checkout' ;
+include ( 'includes/templates/header.html' ) ;
+include ( 'includes/templates/nav.html') ;
 
-// check for cart total
-if(isset($_GET['total']) && ($_GET['total'] > 0) && (!empty($_SESSION['cart'])))
+# Check for passed total and cart.
+if ( isset( $_GET['total'] ) && ( $_GET['total'] > 0 ) && (!empty($_SESSION['cart']) ) )
 {
-	// require db connection
+  # Open database connection.
   require ('../connect_db.php');
-	// store buyer and order total into orders table
+  
+  # Store buyer and order total in 'orders' database table.
   $q = "INSERT INTO orders ( user_id, total, order_date ) VALUES (". $_SESSION['user_id'].",".$_GET['total'].", NOW() ) ";
   $r = mysqli_query ($dbc, $q);
-	// retrieve current order number
+  
+  # Retrieve current order number.
   $order_id = mysqli_insert_id($dbc) ;
-	// retrieve cart items from store table
+  
+  # Retrieve cart items from 'store' database table.
   $q = "SELECT * FROM store WHERE item_id IN (";
-	foreach ($_SESSION['cart'] as $id => $value) { 
-		$q .= $id . ','; 
-	}
-  $q = substr($q, 0, -1).') ORDER BY item_id ASC';
-  $r = mysqli_query($dbc, $q);
+  foreach ($_SESSION['cart'] as $id => $value) { $q .= $id . ','; }
+  $q = substr( $q, 0, -1 ) . ') ORDER BY item_id ASC';
+  $r = mysqli_query ($dbc, $q);
 
   # Store order contents in 'order_contents' database table.
   while ($row = mysqli_fetch_array ($r, MYSQLI_ASSOC))
@@ -40,19 +38,19 @@ if(isset($_GET['total']) && ($_GET['total'] > 0) && (!empty($_SESSION['cart'])))
     $result = mysqli_query($dbc,$query);
   }
   
-	// close db connection
+  # Close database connection.
   mysqli_close($dbc);
 
-	// display order number
+  # Display order number.
   echo "<p>Thanks for your order. Your Order Number Is #".$order_id."</p>";
 
-	// remove cart items
-  $_SESSION['cart'] = NULL;
-} else { 
-	echo '<p>There are no items in your cart.</p>';
+  # Remove cart items.  
+  $_SESSION['cart'] = NULL ;
 }
+# Or display a message.
+else { echo '<p>There are no items in your cart.</p>' ; }
 
-// include footer
-include ('includes/templates/footer.html');
+# Display footer section.
+include ( 'includes/templates/footer.html' ) ;
 
 ?>

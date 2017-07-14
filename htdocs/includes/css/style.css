@@ -8,7 +8,6 @@ body {
 	margin: 0 auto;
 }
 
-
 .img-thumbnail {
 	max-width: 100px;
 }
@@ -42,8 +41,14 @@ body {
 
 /* table */	
 td {
-	border-right: 4px solid orange;
+	border-right: 4px solid #772953;
 }
+
+td:last-of-type {
+	border: none;
+}
+
+
 
 td p {
 	height: 100px;
