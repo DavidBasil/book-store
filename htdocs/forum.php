@@ -16,8 +16,8 @@ include('includes/templates/nav.html');
 $q = "SELECT * FROM forum";
 $r = mysqli_query($dbc,$q);
 ?>	
-
-<h2 class="text-center animated zoomIn">Forum</h2>
+<div class="container-fluid">
+<h2 class="text-center animated zoomIn well">Forum</h2>
 <br />
 
 <?php
@@ -40,7 +40,7 @@ if(mysqli_num_rows($r) > 0): ?>
 <?php else: ?>
 <p>There are currently no messages.</p>
 <?php endif; ?>
-
+</div>
 <?php 
 mysqli_close($dbc);
 include('includes/templates/footer.html');

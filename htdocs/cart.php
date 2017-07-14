@@ -67,9 +67,9 @@ if (!empty($_SESSION['cart']))
   // Close the database connection. 
   mysqli_close($dbc); 
   // Display the total. 
-	echo '<tr><td colspan="5" style="text-align:right">Total ='.number_format($total,2).'</td></tr></table>
-			<button type="submit" name="submit" class="btn btn-info">Update cart</button>
-			<a href="checkout.php" class="btn btn-danger">Checkout</a>
+	echo '<tr><td colspan="5" style="text-align:right" class="text-info">Total ='.number_format($total,2).'</td></tr></table>
+			<button type="submit" name="submit" class="btn btn-warning">Update cart</button>
+			<a href="checkout.php" class="btn btn-info">Checkout</a>
 		</button></form>';
 }
 else { 

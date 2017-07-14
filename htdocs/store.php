@@ -19,7 +19,7 @@ require ('../connect_db.php');
 // include navigation
 include('includes/templates/nav.html');
 
-echo "<div class='container-fluid text-center'><h3>Store</h3><br>";
+echo "<div class='container-fluid text-center'><h3 class='well'>Store</h3><br>";
 // retrieve all items from db
 $q = "SELECT * FROM store";
 $r = mysqli_query($dbc, $q);

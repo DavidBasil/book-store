@@ -46,6 +46,6 @@ echo "</div>";
 mysqli_close($dbc);
 
 // include footer
-include ('includes/templates/footer.html');
+include('includes/templates/footer.html');
 
 ?>

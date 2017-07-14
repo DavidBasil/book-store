@@ -16,7 +16,7 @@ include('includes/templates/nav.html');
 
 echo <<<TXT
 <div class="container-fluid text-center">
-	<h3>DASHBOARD</h3>
+	<h3 class="well">DASHBOARD</h3>
 	<br />
 	<h4>Welcome to dashboard, {$_SESSION['first_name']} {$_SESSION['last_name']}</h4>
 </div>
