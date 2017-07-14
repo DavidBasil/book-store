@@ -58,7 +58,7 @@ if (!empty($_SESSION['cart']))
     $subtotal = $_SESSION['cart'][$row['item_id']]['quantity'] * $_SESSION['cart'][$row['item_id']]['price'];
     $total += $subtotal;
 		// display rows
-		echo "<tr>
+		echo "<tr class='animated fadeInLeft'>
 						<td>{$row['item_name']}</td> 
 						<td>{$row['item_desc']}</td>
    					<td><input type='text' size='3' name='qty[{$row['item_id']}]' value='{$_SESSION['cart'][$row['item_id']]['quantity']}'></td>
@@ -67,10 +67,11 @@ if (!empty($_SESSION['cart']))
   // Close the database connection. 
   mysqli_close($dbc); 
   // Display the total. 
-	echo '<tr><td colspan="5" style="text-align:right" class="bg-success">Total ='.number_format($total,2).'</td></tr></table>
-			<button type="submit" name="submit" class="btn btn-warning">Update cart</button>
-		<button class="btn btn-warning" ><a style="color: #000" href="checkout.php?total='.$total.'">Checkout</button>
-		</button></form>';
+	echo '<tr>
+					<td colspan="5" style="text-align:right" class="bg-success">Total = '.number_format($total,2).'</td></tr>
+				</table>
+				<button type="submit" name="submit" class="btn btn-warning">Update cart</button>
+			<button class="btn btn-warning" ><a href="checkout.php?total='.$total.'">Checkout</a></button></form>';
 }
 else { 
 	echo "<p>Your cart is currently empty.</p>"; 
@@ -78,6 +79,6 @@ else {
 
 echo "</div>";
 // include footer
-include ('includes/templates/footer.html');
+include('includes/templates/footer.html');
 
 ?>

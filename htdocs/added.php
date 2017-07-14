@@ -33,11 +33,15 @@ if(mysqli_num_rows($r) == 1) {
   if(isset($_SESSION['cart'][$id])){ 
 		// add one more of this product
     $_SESSION['cart'][$id]['quantity']++; 
-    echo '<p>Another "'.$row["item_name"].'" has been added to your cart</p>';
+		echo '<p>Another "'.$row["item_name"].'" has been added to your cart</p>
+					<a href="store.php"><i class="fa fa-arrow-left"></i>  Go back to Store</a>  | 
+					<a href="cart.php"><i class="fa fa-shopping-cart"></i>  View Cart</a>';
   } else {
 		// or add one this product to cart
     $_SESSION['cart'][$id]= array('quantity' => 1, 'price' => $row['item_price']);
-		echo '<h3>A "'.$row["item_name"].'" has been added to your cart</h3>';
+		echo '<h3>A "'.$row["item_name"].'" has been added to your cart</h3>
+					<a href="store.php"><i class="fa fa-arrow-left"></i>  Go back to Store</a>  | 
+					<a href="cart.php"><i class="fa fa-shopping-cart"></i>  View Cart</a>';
   }
 }
 
