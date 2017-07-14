@@ -1,56 +1,37 @@
 <?php
-// TODO refactor everything
+
+// start session
 session_start();
 
+// redirect to login page if user not authorized
 if (!isset($_SESSION['user_id'])){
   require('login_tools.php');
   load();
 }
 
+// page title, header and nav
 $page_title = 'Post Message';
 include('includes/templates/header.html');
+include('includes/templates/nav.html');
 
-?>
-
-<?php
-echo <<<MENU
-<nav class="navbar">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Book Store</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li><a href="forum.php">Forum</a></li>
-      <li><a href="store.php">Store</a></li>
-      <li><a href="dashboard.php">Dashboard</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-    </ul>
-  </div>
-</nav>
-MENU;
 ?>
 
 <div class="container-fluid text-center">
 	<div class="well">
-
-		<form action="post_action.php" method="post" accept-charset="utf-8" class="form text-center">
+		<form action="post_action.php" method="post" id="forum-post" accept-charset="utf-8" class="form text-center">
 			<div class="form-group">
 				<label for="subject">Subject</label>
-				<input type="text" name="subject" size="50" id="subject" class="form-control" />
+				<input type="text" name="subject" size="50" id="subject" class="form-control" required/>
 			</div>
 			<div class="form-group">
 				<label for="message"></label>
-				<textarea name="message" id="message" rows="5" cols="50" class="form-control"></textarea>
+				<textarea name="message" id="message" rows="5" cols="50" class="form-control" required></textarea>
 			</div>
-				<button type="submit" class="btn btn-success">Post</button>
+				<button type="submit" class="btn"><i class="fa fa-plus-square"></i>  Post</button>
 		</form> 
-
 	</div>
-
 </div>
 
-
 <?php 
+// include footer
 include('includes/templates/footer.html');

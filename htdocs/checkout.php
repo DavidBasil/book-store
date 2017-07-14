@@ -39,11 +39,11 @@ if(isset( $_GET['total']) && ($_GET['total'] > 0) && (!empty($_SESSION['cart']))
 	// close db connection
   mysqli_close($dbc);
 	// display order number
-  echo "<p>Thanks for your order. Your Order Number Is #".$order_id."</p>";
+  echo "<div class='container-fluid'><p>Thanks for your order. Your Order Number Is #".$order_id."</p></div>";
 	// remove cart items
   $_SESSION['cart'] = NULL ;
 } else { 
-	echo '<p>There are no items in your cart.</p>'; 
+	echo '<div class="container-fluid"><p>There are no items in your cart.</p></div>'; 
 }
 
 // include footer

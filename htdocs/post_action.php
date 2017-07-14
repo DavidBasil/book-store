@@ -1,16 +1,21 @@
 <?php
 
+// start session and require login
 session_start();
 require('login_tools.php');
 
+// redirect to login page if user not authorized
 if (!isset($_SESSION['user_id'])){
   require('login_tools.php');
   load();
 }
 
+// page title, header and nav
 $page_title = 'Post Error';
 include('includes/templates/header.html');
+include('includes/templates/nav.html');
 
+// validate submitted form
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
   // echo errors if subject and message fields are empty
   if (empty($_POST['subject'])){
@@ -36,16 +41,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     } else {
       load('forum.php');
     }
+		// close db connection
     mysqli_close($dbc);
   }
 }
 
-?>
-
-<p>
-  <a href="forum.php">Forum</a>
-</p>
-
-<?php
-
-include('includes/templatesfooter.html');
+// include footer
+include('includes/templates/footer.html');

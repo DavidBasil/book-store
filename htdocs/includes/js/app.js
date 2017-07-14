@@ -9,4 +9,5 @@ $(function(){
 		}, i*500)
 	})
 
+
 }) // end of main function
