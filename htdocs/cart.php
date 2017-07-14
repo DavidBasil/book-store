@@ -13,7 +13,7 @@ if (!isset( $_SESSION['user_id'])) {
 $page_title = 'Cart' ;
 include ('includes/templates/header.html');
 include('includes/templates/nav.html');
-// todo: make cart responsive
+
 echo "<div class='container-fluid'>";
 // if cart form has been submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -47,7 +47,7 @@ if (!empty($_SESSION['cart']))
   $r = mysqli_query ($dbc, $q);
 	// display body section
 	echo '<form action="cart.php" method="post">
-					<table class="table">
+					<table class="table table-condensed">
 						<tr>
 							<th colspan="5">Items in your cart</th>
 						</tr>
@@ -71,7 +71,8 @@ if (!empty($_SESSION['cart']))
 					<td colspan="5" style="text-align:right" class="bg-success">Total = '.number_format($total,2).'</td></tr>
 				</table>
 				<button type="submit" name="submit" class="btn btn-warning">Update cart</button>
-			<button class="btn btn-warning" ><a href="checkout.php?total='.$total.'">Checkout</a></button></form>';
+				<button class="btn btn-warning"><a class="btn-checkout" href="checkout.php?total='.$total.'">Checkout</a></button>
+				</form>';
 }
 else { 
 	echo "<p>Your cart is currently empty.</p>"; 
@@ -80,5 +81,4 @@ else {
 echo "</div>";
 // include footer
 include('includes/templates/footer.html');
-
 ?>
