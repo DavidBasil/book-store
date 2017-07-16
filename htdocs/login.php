@@ -20,15 +20,18 @@ if (isset($errors) && !empty($errors)){
 	<br />
 	<form action="login_action.php" method="post" class="form-inline text-center">
 		<div class="form-group">
-			<label for="email">Email:</label>	
+			<label for="email">Email: </label>	
 			<input type="email" name="email" id="email" class="form-control" /><br>
 		</div>
 		<div class="form-group">
-			<label for="pass">Password:</label>
+			<label for="pass">Password: </label>
 			<input type="password" name="pass" id="pass" class="form-control" /><br>
 		</div>
 		<button type="submit" class="btn btn-success">Login <span class="glyphicon glyphicon-home"></span></button>
 	</form>
+	</div>
+	<div class="well">
+		<p>Don't have an account? <a href="register.php" class="btn btn-success">register here</a></p>	
 	</div>
 </div>
 

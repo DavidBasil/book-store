@@ -1,5 +1,4 @@
 <?php
-// todo: modify logout styles
 // start the session
 session_start();
 

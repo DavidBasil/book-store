@@ -1,4 +1,5 @@
-<?php // registration page
+<?php
+// todo: add styles to the page
 
 // set page title and display header section
 $page_title = 'Register';

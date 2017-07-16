@@ -22,6 +22,5 @@ echo <<<TXT
 </div>
 TXT;
 
-
 include('includes/templates/footer.html');
 
