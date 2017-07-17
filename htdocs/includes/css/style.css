@@ -96,8 +96,19 @@ a.view-cart{
 
 .btn-success {
 	background-color: #772953;
+	font-size: 18px;
 }
 
 .btn-success:hover {
 	background-color: #772953;
+}
+
+/* register form */
+#register-form input {
+	max-width: 400px;
+}
+
+/* error message */
+.err_msg {
+  color: #FF0000;	
 }

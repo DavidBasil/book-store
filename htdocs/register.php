@@ -1,5 +1,4 @@
 <?php
-// todo: add styles to the page
 
 // set page title and display header section
 $page_title = 'Register';
@@ -54,9 +53,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 		$r = mysqli_query($dbc, $q);
 		// show sucess message
 		if ($r)	{
-			echo '<h1>Registered!<h1>
-						<p>You are now registered</p>
-						<p><a href="login.php">Login</p>';
+			echo '<div class="container-fluid text-center">
+							<h1>Registered!<h1>
+							<p>You are now registered</p>
+							<p><a href="login.php" class="btn btn-sucess">Login</p>
+						</div>';
 		}
 		// close the connection
 		mysqli_close($dbc);
@@ -65,11 +66,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 	}
 	// if there are errors
 	else {
-		echo '<h2>Error!</h2><p id="err_msg">The following error(s) occurred:<br></p>';
+		echo '<div class="container-fluid text-center"><h2>Error!</h2><p class="err_msg">The following error(s) occurred:<br></p>';
 		foreach ($errors as $msg){
 			echo " - $msg<br>";
 		}
-		echo "Please try again.";
+		echo "Please try again.</div>";
 		mysqli_close($dbc);
 	}
 
@@ -77,24 +78,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 }
 ?>
 
-<h2>Register</h2>
-<form action="register.php" method="post">
-	<p>
-	First Name:
-	<input type="text" name="first_name" value="<?php if(isset($_POST['first_name'])) echo $_POST['first_name']; ?>" />
-	Last Name:
-	<input type="text" name="last_name" value="<?php if(isset($_POST['last_name'])) echo $_POST['last_name']; ?>" />
-	<p>
-		Email Address:
-		<input type="text" name="email" value="<?php if(isset($_POST['email'])) echo $_POST['email']; ?>" />	
-	</p>
-	<p>
-		Password:
-		<input type="password" name="pass1" value="<?php if(isset($_POST['pass1'])) echo $_POST['pass1']; ?>" />	
-		Confirm Password:
-		<input type="password" name="pass2" value="<?php if(isset($_POST['pass2'])) echo $_POST['pass2']; ?>" />	
-	</p>
-	<input type="submit" value="Register" />
-</form>
+<div class="container-fluid text-center">
+	<h2>Register</h2>
+	<div class="well">
+		<form action="register.php" method="post" class="form-horizontal" id="register-form">
+			<div class="form-group">
+				<label for="first_name">First Name:</label>
+				<input type="text" id="first_name" name="first_name" class="form-control" value="<?php if(isset($_POST['first_name'])) echo $_POST['first_name']; ?>" />
+			</div>
+			<div class="form-group">
+				<label for="last_name">Last Name:</label>
+				<input type="text" id="last_name" name="last_name" class="form-control" value="<?php if(isset($_POST['last_name'])) echo $_POST['last_name']; ?>" />
+			</div>
+			<div class="form-group">
+				<label for="email">Email Address:</label>
+				<input type="text" id="email" name="email" class="form-control" value="<?php if(isset($_POST['email'])) echo $_POST['email']; ?>" />	</p>
+			</div>
+			<hr />
+			<div class="form-group">
+				<label for="pass1">Password:</label>	
+				<input type="password" name="pass1" class="form-control" value="<?php if(isset($_POST['pass1'])) echo $_POST['pass1']; ?>" />	
+			</div>
+			<div class="form-group">
+				<label for="pass2">Confirm password:</label>	
+				<input type="password" name="pass2" class="form-control" value="<?php if(isset($_POST['pass2'])) echo $_POST['pass2']; ?>" />	
+			</div>
+			<input type="submit" value="Register" class="btn btn-success"/>
+		</form>
+	</div>
+</div>
+
 
 <?php include('includes/templates/footer.html'); ?>
